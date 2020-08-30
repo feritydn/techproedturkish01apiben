@@ -18,6 +18,10 @@ public class TestBase {
 	protected RequestSpecification spec01;
 	protected RequestSpecification spec02;
 	protected RequestSpecification spec03;
+	protected Map <String, String> bookingDatesMap = new HashMap <>();
+	protected Map <String, Object> requestBodymap = new HashMap<>();
+	protected JSONObject jsonBookingDateBody = new JSONObject();
+	protected JSONObject jsonrequestBody = new JSONObject();
 	
 	@Before
 	public void setUp01() {
@@ -45,13 +49,13 @@ public class TestBase {
 	
 	protected Response createRequestBodyByJsonObjectClass() {
 		
-		JSONObject jsonBookingDateBody = new JSONObject();
+		
 		jsonBookingDateBody.put("checkin", "2020-05-02");
 		jsonBookingDateBody.put("checkout", "2020-05-05");
 		
-		JSONObject jsonrequestBody = new JSONObject();
-		jsonrequestBody.put("firstname", "Ferit");
-		jsonrequestBody.put("lastname", "Aydin");
+		
+		jsonrequestBody.put("firstname", "Ali");
+		jsonrequestBody.put("lastname", "Can");
 		jsonrequestBody.put("totalprice", 123);
 		jsonrequestBody.put("depositpaid", true);
 		jsonrequestBody.put("bookingdates", jsonBookingDateBody ); // Cok onemli
@@ -72,13 +76,13 @@ public class TestBase {
 	
 	protected Response createRequestBodyByMap() {
 		
-Map <String, String> bookingDatesMap = new HashMap <>();
+		
 		
 		bookingDatesMap.put("checkin", "2020-05-02");
 		bookingDatesMap.put("checkout", "2020-05-05");
 		
 		
-		Map <String, Object> requestBodymap = new HashMap<>();
+		
 		requestBodymap.put("firstname", "Ferit");
 		requestBodymap.put("lastname", "Aydin");
 		requestBodymap.put("totalprice", 123);

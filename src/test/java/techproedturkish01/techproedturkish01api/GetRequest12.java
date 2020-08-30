@@ -1,6 +1,9 @@
 package techproedturkish01.techproedturkish01api;
 import org.junit.Test;
 import org.testng.asserts.SoftAssert;
+
+import com.google.gson.Gson;
+
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.*;
 import java.util.ArrayList;
@@ -28,6 +31,13 @@ public class GetRequest12 extends TestBase{
 		softAssert.assertEquals(listOfMaps.get(120).get("completed"), true,"Istenen gibi degil");
 		softAssert.assertEquals(listOfMaps.get(listOfMaps.size()-2).get("title"), "numquam repellendus a magnam");
 		softAssert.assertAll();
+		
+		// java objectlerini JSon formatina cevirme. 
+		// Aslinda biz bunu cok kullanmayiz.
+		
+		Gson gson = new Gson();
+		String jsonFromList = gson.toJson(listOfMaps);
+		System.out.println(jsonFromList);
 		
 		
 	

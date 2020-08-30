@@ -3,6 +3,8 @@ package techproedturkish01.techproedturkish01api;
 import org.junit.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.google.gson.Gson;
+
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.*;
@@ -39,14 +41,17 @@ public class GetRequest11 extends TestBase {
 	   SoftAssert softAssert =  new SoftAssert();
 	   softAssert.assertEquals(map.get("completed"),false, "completed istenilen gibi degil");
 	   
-	   softAssert.assertEquals(map.get("userId"),1.0, "User Id istenilen gibi degil");
-	   softAssert.assertEquals(map.get("id"),2.0, "Id istenilen gibi degil");
+	   // intler double olabilir boylece fail alabilirsin.
+	   softAssert.assertEquals(map.get("userId"),1, "User Id istenilen gibi degil");
+	   softAssert.assertEquals(map.get("id"),2, "Id istenilen gibi degil");
 	   softAssert.assertEquals(map.get("title"), "quis ut nam facilis et officia qui", "Title istenilen gibi degil");
 	   
 	   
 	   softAssert.assertAll();
-	
 	   
+	  Gson gson = new Gson();
+	  String jsonFromMap = gson.toJson(map);
+	  System.out.println(jsonFromMap);
 	}
 
 }
